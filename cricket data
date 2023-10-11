@@ -1,0 +1,252 @@
+use cricket
+switched to db cricket
+db.createCollection("data")
+{ ok: 1 }
+db.data.insertMany([
+
+	{
+		"Name":"virat kohli",
+		"Age":34,
+		"100's":77,
+		"50's":133,
+		"Total score":25852,
+		"Total wickets":8
+
+	},
+
+	{
+		"Name":"rohit sharma",
+		"Age":36,
+		"100's":44,
+		"50's":97,
+		"Total score":17647,
+		"Total wickets":11
+
+	},
+
+	{
+		"Name":"shikhar dhawan",
+		"Age":37,
+		"100's":24,
+		"50's":55,
+		"Total score":10898,
+		"Total wickets":4
+
+	},
+
+	{
+		"Name":"david miller",
+		"Age":38,
+		"100's":43,
+		"50's":65,
+		"Total score":15679,
+		"Total wickets":21
+
+	},
+
+	{
+		"Name":"ravindra jadeja",
+		"Age":39,
+		"100's":57,
+		"50's":62,
+		"Total score":14635,
+		"Total wickets":33
+
+	},
+
+	{
+		"Name":"gillcrist",
+		"Age":42,
+		"100's":47,
+		"50's":56,
+		"Total score":16783,
+		"Total wickets":66
+
+	},
+
+	{
+		"Name":"dhoni",
+		"Age":39,
+		"100's":24,
+		"50's":46,
+		"Total score":9876,
+		"Total wickets":47
+
+	},
+
+	{
+		"Name":"surya kumar yadav",
+		"Age":29,
+		"100's":4,
+		"50's":16,
+		"Total score":2890,
+		"Total wickets":2
+
+	},
+
+	{
+		"Name":"sachin tendulukar",
+		"Age":51,
+		"100's":99,
+		"50's":176,
+		"Total score":27689,
+		"Total wickets":95
+
+	},
+
+	{
+		"Name":"nicholas pooran",
+		"Age":34,
+		"100's":28,
+		"50's":34,
+		"Total score":5622,
+		"Total wickets":42
+
+	},
+
+	{
+		"Name":"stuward binny",
+		"Age":35,
+		"100's":22,
+		"50s":43,
+		"Total score":5422,
+		"Total wickets":12
+
+	},
+
+	{
+		"Name":"quenton decock",
+		"Age":28,
+		"100's":18,
+		"50's":24,
+		"Total score":4357,
+		"Total wickets":2
+
+	},
+
+	{
+		"Name":"imran malik",
+		"Age":32,
+		"100's":37,
+		"50's":49,
+		"Total score":7589,
+		"Total wickets":3
+
+	},
+
+	{
+		"Name":"sangakara",
+		"Age":49,
+		"100's":58,
+		"50's":87,
+		"Total score":14893,
+		"Total wickets":44
+
+	},
+
+	{
+		"Name":"ricky ponting",
+		"Age":58,
+		"100's":71,
+		"50's":94,
+		"Total score":26892,
+		"Total wickets":39
+
+	}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("652702bfb08ace23d0307cee"),
+    '1': ObjectId("652702bfb08ace23d0307cef"),
+    '2': ObjectId("652702bfb08ace23d0307cf0"),
+    '3': ObjectId("652702bfb08ace23d0307cf1"),
+    '4': ObjectId("652702bfb08ace23d0307cf2"),
+    '5': ObjectId("652702bfb08ace23d0307cf3"),
+    '6': ObjectId("652702bfb08ace23d0307cf4"),
+    '7': ObjectId("652702bfb08ace23d0307cf5"),
+    '8': ObjectId("652702bfb08ace23d0307cf6"),
+    '9': ObjectId("652702bfb08ace23d0307cf7"),
+    '10': ObjectId("652702bfb08ace23d0307cf8"),
+    '11': ObjectId("652702bfb08ace23d0307cf9"),
+    '12': ObjectId("652702bfb08ace23d0307cfa"),
+    '13': ObjectId("652702bfb08ace23d0307cfb"),
+    '14': ObjectId("652702bfb08ace23d0307cfc")
+  }
+}
+db.data.find({"Age":{$lte:30}})
+{
+  _id: ObjectId("652702bfb08ace23d0307cf5"),
+  Name: 'surya kumar yadav',
+  Age: 29,
+  "100's": 4,
+  "50's": 16,
+  'Total score': 2890,
+  'Total wickets': 2
+}
+{
+  _id: ObjectId("652702bfb08ace23d0307cf9"),
+  Name: 'quenton decock',
+  Age: 28,
+  "100's": 18,
+  "50's": 24,
+  'Total score': 4357,
+  'Total wickets': 2
+}
+db.data.find().sort({"100's":-1}).limit(1)
+{
+  _id: ObjectId("652702bfb08ace23d0307cf6"),
+  Name: 'sachin tendulukar',
+  Age: 51,
+  "100's": 99,
+  "50's": 176,
+  'Total score': 27689,
+  'Total wickets': 95
+}
+db.data.updateOne({"Name":"sangakara"},{$set:{"100's":59,"Age":40}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.data.find({"Name":"sangakara"})
+{
+  _id: ObjectId("652702bfb08ace23d0307cfb"),
+  Name: 'sangakara',
+  Age: 40,
+  "100's": 59,
+  "50's": 87,
+  'Total score': 14893,
+  'Total wickets': 44
+}
+db.data.find().sort({"Total score":1}).limit(2)
+{
+  _id: ObjectId("652702bfb08ace23d0307cf5"),
+  Name: 'surya kumar yadav',
+  Age: 29,
+  "100's": 4,
+  "50's": 16,
+  'Total score': 2890,
+  'Total wickets': 2
+}
+{
+  _id: ObjectId("652702bfb08ace23d0307cf9"),
+  Name: 'quenton decock',
+  Age: 28,
+  "100's": 18,
+  "50's": 24,
+  'Total score': 4357,
+  'Total wickets': 2
+}
+db.data.find().sort({"100's":1}).limit(1)
+{
+  _id: ObjectId("652702bfb08ace23d0307cf5"),
+  Name: 'surya kumar yadav',
+  Age: 29,
+  "100's": 4,
+  "50's": 16,
+  'Total score': 2890,
+  'Total wickets': 2
+}
